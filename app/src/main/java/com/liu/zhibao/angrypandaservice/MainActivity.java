@@ -17,6 +17,7 @@ import android.widget.Button;
 import com.liu.zhibao.angrypandaservice.proxy.DeathRemoteProxy;
 import com.liu.zhibao.angrypandaservice.proxy.MessagerProxy;
 import com.liu.zhibao.angrypandaservice.proxy.RemoteProxy;
+import com.liu.zhibao.angrypandaservice.proxy.TransactProxy;
 import com.liu.zhibao.angrypandaservice.service.UsingIntentService;
 
 public class MainActivity extends Activity {
@@ -31,6 +32,8 @@ public class MainActivity extends Activity {
     private Button mSendBtn;
 
     private Button mCrashBtn;
+
+    private Button mTransactBtn;
 
     private Intent intent;
     private MediaPlayer mediaPlayer;
@@ -107,11 +110,21 @@ public class MainActivity extends Activity {
             }
         });
 
+        mTransactBtn=(Button)findViewById(R.id.transact);
+        mTransactBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TransactProxy.getInstance().sendMessage();
+            }
+        });
+
         MessagerProxy.init(getApplicationContext(),"");
 
         RemoteProxy.init(getApplicationContext());
 
         DeathRemoteProxy.init(getApplicationContext());
+
+        TransactProxy.init(getApplicationContext());
 
     }
 
@@ -121,6 +134,7 @@ public class MainActivity extends Activity {
         MessagerProxy.getInstance().bindService();
         RemoteProxy.getInstance().bindService();
         DeathRemoteProxy.getInstance().bindService();
+        TransactProxy.getInstance().bindService();
     }
 
     /*

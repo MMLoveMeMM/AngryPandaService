@@ -16,17 +16,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".service.MessageService"
+
+        <service
+            android:name=".service.MessageService"
             android:exported="true"
-            android:process="com.message.remote.service"/>
-        <service android:name=".service.RemoteService"
+            android:process="com.message.remote.service" />
+        <service
+            android:name=".service.RemoteService"
             android:exported="true"
-            android:process="com.liu.zhibao.remote.process"/>
-        <service android:name=".service.UsingIntentService"
-            android:exported="true"/>
-        <service android:name=".service.DeathCheckService"
+            android:process="com.liu.zhibao.remote.process" />
+        <service
+            android:name=".service.UsingIntentService"
+            android:exported="true" />
+        <service
+            android:name=".service.DeathCheckService"
             android:exported="true"
-            android:process="com.death.remote.process"/>
+            android:process="com.death.remote.process" />
+        <service
+            android:name=".service.TransactService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>
