@@ -13,15 +13,36 @@
         android:layout_height="wrap_content"
         android:text="intentservice"/>
 
-    <Button
-        android:id="@+id/service"
-        android:text="service"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/service"
+            android:text="service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/sendmessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sendmessage"/>
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/remoteservice"
         android:text="remoteservice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/death"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="death"/>
+    <Button
+        android:id="@+id/crash"
+        android:text="makecrash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
