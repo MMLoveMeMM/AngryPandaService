@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.liu.zhibao.angrypandaservice">
 
+    <permission android:name="com.liu.zhibao.ACCESS_REMOTE_SERVICE"
+        android:protectionLevel="normal"/>
+    <uses-permission android:name="com.liu.zhibao.ACCESS_REMOTE_SERVICE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +28,7 @@
         <service
             android:name=".service.RemoteService"
             android:exported="true"
+            android:permission="com.liu.zhibao.ACCESS_REMOTE_SERVICE"
             android:process="com.liu.zhibao.remote.process" />
         <service
             android:name=".service.UsingIntentService"
