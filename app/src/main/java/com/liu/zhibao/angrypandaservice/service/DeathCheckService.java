@@ -32,9 +32,21 @@ public class DeathCheckService extends Service {
         return mDeathCheck;
     }
 
+    @Override
+    public boolean onUnbind(Intent intent) {
+        Log.e(TAG, "client onUnbind : "+intent.getComponent().getPackageName());
+        return super.onUnbind(intent);
+    }
+
+    @Override
+    public void onRebind(Intent intent) {
+        Log.e(TAG, "client onRebind : "+intent.getComponent().getPackageName());
+        super.onRebind(intent);
+    }
+
     /*
-    * 检查客户端是否crash
-    * */
+        * 检查客户端是否crash
+        * */
     private class CheckDeathRecipient implements IBinder.DeathRecipient {
 
         @Override

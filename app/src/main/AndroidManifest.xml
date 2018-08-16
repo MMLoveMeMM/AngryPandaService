@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.liu.zhibao.angrypandaservice">
 
-    <permission android:name="com.liu.zhibao.ACCESS_REMOTE_SERVICE"
-        android:protectionLevel="normal"/>
-    <uses-permission android:name="com.liu.zhibao.ACCESS_REMOTE_SERVICE"/>
+    <permission
+        android:name="com.liu.zhibao.ACCESS_REMOTE_SERVICE"
+        android:protectionLevel="normal" />
+
+    <uses-permission android:name="com.liu.zhibao.ACCESS_REMOTE_SERVICE" />
 
     <application
         android:allowBackup="true"
@@ -39,6 +41,14 @@
             android:process="com.death.remote.process" />
         <service
             android:name=".service.TransactService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".service.mul.ConnOneService"
+            android:enabled="true"
+            android:exported="true" />
+        <service
+            android:name=".service.mul.ConnTwoService"
             android:enabled="true"
             android:exported="true"></service>
     </application>

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.liu.zhibao.angrypandaservice.proxy.DeathRemoteProxy;
+import com.liu.zhibao.angrypandaservice.proxy.DoubleProxy;
 import com.liu.zhibao.angrypandaservice.proxy.MessagerProxy;
 import com.liu.zhibao.angrypandaservice.proxy.RemoteProxy;
 import com.liu.zhibao.angrypandaservice.proxy.TransactProxy;
@@ -34,6 +35,8 @@ public class MainActivity extends Activity {
     private Button mCrashBtn;
 
     private Button mTransactBtn;
+
+    private Button mDoubleBtn;
 
     private Intent intent;
     private MediaPlayer mediaPlayer;
@@ -118,6 +121,14 @@ public class MainActivity extends Activity {
             }
         });
 
+        mDoubleBtn=(Button)findViewById(R.id.muldouble);
+        mDoubleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DoubleProxy.getInstance().connLine("hello,liuzhibao");
+            }
+        });
+
         MessagerProxy.init(getApplicationContext(),"");
 
         RemoteProxy.init(getApplicationContext());
@@ -125,6 +136,8 @@ public class MainActivity extends Activity {
         DeathRemoteProxy.init(getApplicationContext());
 
         TransactProxy.init(getApplicationContext());
+
+        DoubleProxy.init(getApplicationContext());
 
     }
 
@@ -135,6 +148,7 @@ public class MainActivity extends Activity {
         RemoteProxy.getInstance().bindService();
         DeathRemoteProxy.getInstance().bindService();
         TransactProxy.getInstance().bindService();
+        DoubleProxy.getInstance().bindService();
     }
 
     /*
