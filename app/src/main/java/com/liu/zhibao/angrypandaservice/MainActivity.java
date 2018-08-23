@@ -38,6 +38,10 @@ public class MainActivity extends Activity {
 
     private Button mDoubleBtn;
 
+    private Button mUnbindBtn;
+
+    private Button mCrashRemoteBtn;
+
     private Intent intent;
     private MediaPlayer mediaPlayer;
     @Override
@@ -93,6 +97,21 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 RemoteProxy.getInstance().updateService("hello,liuzhibao!");
+            }
+        });
+        mUnbindBtn=(Button)findViewById(R.id.unbindremote) ;
+        mUnbindBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RemoteProxy.getInstance().unBindService();
+            }
+        });
+
+        mCrashRemoteBtn=(Button)findViewById(R.id.remotecrash);
+        mCrashRemoteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RemoteProxy.getInstance().makeCrash();
             }
         });
 

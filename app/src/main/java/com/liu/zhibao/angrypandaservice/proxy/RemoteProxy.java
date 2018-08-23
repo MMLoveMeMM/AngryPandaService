@@ -41,6 +41,7 @@ public class RemoteProxy implements ServiceConnection {
 
     @Override
     public void onServiceDisconnected(ComponentName name) {
+        Log.e(TAG,"onServiceDisconnected remote service unbind !");
         if(mService!=null){
             mService=null;
         }
@@ -60,11 +61,14 @@ public class RemoteProxy implements ServiceConnection {
     }
 
     public void unBindService(){
-        mContext.unbindService(instance);
+        if(mService!=null) {
+            mContext.unbindService(instance);
+        }
     }
 
     public void updateService(String data){
 
+        Log.e(TAG,"000current thread : "+Thread.currentThread());
         if(mService!=null){
             if(!TextUtils.isEmpty(data)){
                 try {
@@ -75,6 +79,16 @@ public class RemoteProxy implements ServiceConnection {
             }
         }
 
+    }
+
+    public void makeCrash(){
+        if(mService!=null){
+            try {
+                mService.makeCrash();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

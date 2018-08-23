@@ -5,4 +5,5 @@
 
  interface IRemoteServiceInteface {
      void updateService(String data);
+     void makeCrash();
  }

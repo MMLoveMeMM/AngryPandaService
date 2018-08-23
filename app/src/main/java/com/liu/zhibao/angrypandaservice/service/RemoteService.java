@@ -4,6 +4,7 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.MediaPlayer;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.Parcel;
@@ -80,7 +81,25 @@ public class RemoteService extends Service {
         public void updateService(String data) throws RemoteException {
             // 不是UI线程了,又和Messager+Service的一个区别
             // Toast.makeText(getApplicationContext(), "info : "+data, Toast.LENGTH_SHORT).show();
+            Log.e(TAG,"000current thread 1: "+Thread.currentThread());
             Log.e(TAG,"info : "+data);
+        }
+
+        @Override
+        public void makeCrash() throws RemoteException {
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    /*
+                    * 直接会将remote service搞挂掉
+                    * */
+                    Log.e(TAG,"000current thread 2: "+Thread.currentThread());
+                    MediaPlayer mediaPlayer=null;
+                    mediaPlayer.prepareAsync();
+                }
+            }).start();
+
         }
 
         @Override
